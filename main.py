@@ -23,15 +23,13 @@ def calculate():
         else:  # hectares
             land_area_hectares = land_area
 
-        # Determine dolomite rate based on pH
-        if ph < 3.9:
-            dolomite_rate = 2500
-        elif 3.9 <= ph < 4.2:
-            dolomite_rate = 2000
-        elif 4.2 <= ph < 4.5:
-            dolomite_rate = 1500
-        else:  # pH >= 4.5
-            dolomite_rate = 1000
+        # Determine dolomite rate based on current soil pH
+        if ph < 4.5:
+            # Calculate the amount of dolomite needed to raise pH to 4.5
+            # This is a simplified approach; actual requirements may vary
+            dolomite_rate = (4.5 - ph) * 1000  # Example calculation
+        else:
+            dolomite_rate = 0  # No application needed if pH is optimal
 
         # Adjust rate based on elevation
         if elevation == "low":
